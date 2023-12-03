@@ -1,0 +1,95 @@
+body{
+    background-color: rgb(32, 184, 255);
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#tituloPrincipal{
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 4em;
+    margin-top: 5%;
+    font-family: 'Kanit', sans-serif;
+}
+
+@keyframes subirCajaPrincipal {
+    from {
+        margin-left: 5%;
+        margin-top: 5%;
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    } to {
+        margin-left: 6%;
+        margin-top: 4%;
+        box-shadow: -25px 25px 20px  rgba(0, 0, 0, 1);
+    }
+}
+
+@keyframes bajarCajaPrincipal {
+    from {
+        margin-left: 6%;
+        margin-top: 4%;
+        box-shadow: -25px 25px 20px  rgba(0, 0, 0, 1)
+    } to {
+        margin-left: 5%;
+        margin-top: 5%;
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    }
+  }
+  
+#ContenedorPrincipal{
+    width: 90%;
+    margin-bottom: 5%;
+    margin-left: 5%;
+    display: flex;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+#ContenedorPrincipal:hover{
+    animation: subirCajaPrincipal 0.5s ease forwards;
+}
+
+#ContenedorPrincipal:not(hover){
+    animation: bajarCajaPrincipal 0.5s  forwards;
+}
+
+    #ContenedorImagenYTitulo{
+        width: 60%;
+        border-radius: 10px;
+        overflow: hidden;
+        z-index: -1;
+    }
+
+        video{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    #ContenedorFormulario{
+        width: 50%;
+        border-radius: 25px;
+        background-color: white;
+        max-height: 800px;
+        margin-left: -10%;
+        overflow-y: auto; 
+        z-index: 0;       
+    }
+
+        form{
+            margin: 10%;
+        }
+
+            input[type="text"],
+            input[type="password"],
+            input[type="date"],
+            input[type="label"],
+            select {
+                width: 100%;
+            }

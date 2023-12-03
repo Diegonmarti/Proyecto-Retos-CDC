@@ -1,0 +1,41 @@
+Implementar un formulario de registro de usuarios interactivo e integrarlo en la interfaz web del escaparate virtual. Escribir igualmente un sencillo servicio web para probar el funcionamiento del formulario.
+
+Historias de usuario
+
+Cómo cliente querria un formulario de registro para que pueda adquirir productos de la página e informarme de las novedades
+
+Cómo cliente querria un formulario de login para que los usuarios se logueen en la tienda virtual 
+
+Requisitos funcionales
+El formulario de alta debe contar al menos con los siguientes campos:
+
+Nombre y Apellidos (Obligatorio). Compuesto como máximo por dos palabras
+Correo electrónico (Obligatorio). verificar que sigue el formato correcto
+Contraseña de acceso (Obligatorio). Para que sea válida debe tener al menos ocho caracteres y contener al menos una letra minúscula, una mayúscula, un número y un símbolo
+Confirmación de contraseña (Obligatorio)
+Sexo (Opcional)
+Fecha de nacimiento (Opcional)
+Dirección (Opcional)
+País (Opcional, implementado como un selector)
+Número de tarjeta de crédito (Opcional, aparecerá únicamente cuando se indique una dirección completa: campos dirección y país, debe ser un número de tarjeta válido)
+Activar notificaciones de la pagina (Casilla de verificación)
+Recepción de la revista digital (Casilla de verificación)
+Requisitos técnicos
+
+En el formulario se debe indicar de forma visible los campos que son obligatorios y los que son opcionales.
+Se deben validar todos los datos introducidos primando la interactividad
+Si los datos son correctos, mostrará un mensaje que indique que usuario se registro correctamente/ logueo
+Hay que desactivar el refresco de la página.
+No se podrá utilizar ningún tipo de framework para la implementación del formulario
+Se recomienda seguir las recomendaciones WCAG 2.0 para formularios
+Se recomienda realizar test funcionales para probar el funcionario(Selenium, Katalon recorder ...) 
+Material a entregar
+En una nueva rama o en un nuevo repositorio de Github la página web con el formulario integrado y los test funcionales
+En una nueva rama o en un nuevo repositorio de Github la página web con el formulario integrado y los test funcionales 
+La página principal index.html 
+Una carpeta js con los ficheros javascript 
+Una carpeta css con los estilos
+Un fichero Readme.md que explique las características del formulario, indicando las recomendaciones WCAG 2.0  aplicadas y cómo ejecutar los test funcionales
+Publicar la página en Github pages
+Evaluación de la tarea
+La evaluación de la tarea se realizará mediante la rúbrica mostrada abajo, la cual se aplicará únicamente si se cumplen los requisitos funcionales y técnicos. Esta rubrica se aplicará en el aula con casos de prueba que se publicarán una vez vencido el plazo de entrega.

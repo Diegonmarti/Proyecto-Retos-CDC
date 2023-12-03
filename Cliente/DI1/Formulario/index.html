@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FormularioV2</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="tituloPrincipal">Apúntate a nuestra newsletter</div>
+    <main id="ContenedorPrincipal">
+        <div id="ContenedorImagenYTitulo">
+            <video autoplay loop muted>
+                <source src="VideoMontaña.mp4" type="video/mp4">
+                No se pudo cargar el vídeo
+            </video>
+        </div>
+
+        <div id="ContenedorFormulario">
+            <form name="formulario" method="post">
+
+                <a>Nombre y apellido</a><br>
+                <input class="camposacentrar" type="text" id="nombre" name="nombre" oninput="detectarCambiosNombre(true); comprobarTodosBien(false)"/><br/>
+                <span id="nombreError" style="color: red;"></span><br>
+            
+                <a>Email</a><br>
+                <input class="camposacentrar" type="text" id="email" name="email" oninput="detectarCambiosEmail(true); comprobarTodosBien(false)"/><br/>
+                <span id="emailError" style="color: red;"></span><br>
+            
+                <a>Contraseña</a><br>
+                <input class="camposacentrar" type="password" id="contrasenia" name="contrasenia" oninput="detectarCambiosContrasenia(true); comprobarTodosBien(false)" onchange="detectarCambiosRepetirContrasenia(true)"/><br/>
+                <span id="contraseniaError" style="color: red;"></span><br>
+            
+                <a>Repetir contraseña</a><br>
+                <input class="camposacentrar" type="password" id="repetirContrasenia" name="repetirContrasenia" oninput="detectarCambiosRepetirContrasenia(true); comprobarTodosBien(false)"/><br/>
+                <span id="repetirContraseniaError" style="color: red;"></span><br>
+            
+                <a>Sexo</a><br>
+                <select class="camposacentrar" name="sexo" id="sexo">
+                    <option value="">Selecciona una opción</option>
+                    <option name="hombre">Hombre</option>
+                    <option name="mujer">Mujer</option>
+                    <option name="otro">Otro</option>
+                </select><br><br>
+            
+            
+                <a>Fecha de Nacimiento</a><br>
+                <input class="camposacentrar" type="date" name="fechanacimiento"/><br/><br>
+                
+            
+                <a>Dirección</a><br>
+                <input class="camposacentrar" type="text" name="direcccion" /><br/><br>
+                
+            
+                <a>País</a><br>
+                <select class="camposacentrar" name="paises">
+                    <option value="">Selecciona una opción</option>
+                    <option name="españa">España</option>
+                    <option name="noruega">Noruega</option>
+                    <option name="francia">Francia</option>
+                </select><br><br>
+            
+                <a>Número de tarjeta de crédito.</a><br>
+                <input class="camposacentrar" type="label" name="tarjetacredito"/><br/><br>
+            
+                <a>¿Quieres activar las notificaciones?</a>
+                <input class="camposacentrar" type="checkbox" name="notificaciones"/><br/> 
+            
+                <a>¿Quieres subscribirte a la revista digital?</a>
+                <input class="camposacentrar" type="checkbox" name="revista"/><br/> 
+                <br>
+            
+                <input type="submit" id="enviar" name="enviar" value="Enviar formulario" onmouseover="comprobarTodosBien(true)" disabled><br>
+                <span id="formularioError" style="color: red;"></span><br>
+            </form>
+            
+        </div>
+    </main>
+</body>
+<script src="validacion.js"></script>
+</html>
