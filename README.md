@@ -1,13 +1,13 @@
 # PROYECTO RETOS   
 <p align="center">
-  <center><img src="https://github.com/Diegonmarti/Retos-CDC/assets/98549170/c8af3403-83e3-47c8-bede-e563d9183359" alt="Logo" width="100" height="70"></center>
+  <center><img src="https://github.com/Diegonmarti/Proyecto-Retos-CDC/assets/98549170/a25f2c4a-9b78-4c43-bcaf-9d682d45044b" alt="Logo" width="100" height="70"></center>
 </p> 
 
 
-[Pincha para ver la landing page de nuestra página web.](https://diegonmarti.github.io/Retos-CDC/)  📄
+[Pincha para ver la landing page de nuestra página web.](https://diegonmarti.github.io/Proyecto-Retos-CDC/)  📄
 
 
-## 1. [Videojuegos](https://github.com/Diegonmarti/Retos-CDC/tree/main/Videojuegos) 🗂️
+## 1. [Videojuegos](https://github.com/Diegonmarti/Proyecto-Retos-CDC/tree/main/Videojuegos) 🗂️
 
 En este proyecto hay un video con los escenarios, además del terreno en sí, una oficina o zona donde se llevan a cabo tareas laborales.
 
@@ -21,7 +21,7 @@ Cada uno de los escenarios tiene dos texturas e incorporar árboles y alguna zon
 
 En el video se ha incorporado un Third Person Character y un First Person Character con el que se ve como recorre los escenarios creados.
 
-## 2. [Interfaces](https://github.com/Diegonmarti/Proyecto-CDC/tree/main/Interfaces) 🗂️
+## 2. [Interfaces](https://github.com/Diegonmarti/Proyecto-Retos-CDC/tree/main/Interfaces) 🗂️
 
 La carpeta de interfaces contiene las historias de usuario:
 
@@ -31,7 +31,7 @@ La carpeta de interfaces contiene las historias de usuario:
 · DI5 Paleta de colores teniendo en cuenta la pssicología d ecolor.
 · DI6 Implementar la Landing Page
 
-## 3. [Cliente](https://github.com/Diegonmarti/Proyecto-CDC/tree/main/Cliente/DI1) 🗂️
+## 3. [Cliente](https://github.com/Diegonmarti/Proyecto-Retos-CDC/tree/main/Cliente/DI1) 🗂️
 
 DI1 Formulario de registro para que pueda adquirir productos de la página e informarme de las novedades.
 Este formulario tiene validaciones y requisitos técnicos:
@@ -61,10 +61,10 @@ Requisitos funcionales
 · Se recomienda seguir las recomendaciones WCAG 2.0 para formularios
 · Se recomienda realizar test funcionales para probar el funcionario(Selenium, Katalon recorder ...) 
 
-## 4. [Documentación](https://github.com/Diegonmarti/Proyecto-CDC/tree/main/Documentacion) 🗂️
+## 4. [Documentación](https://github.com/Diegonmarti/Proyecto-Retos-CDC/tree/main/Documentacion) 🗂️
 
 Este enlace te llevará a la documentación de nuestro proyecto donde viene explicado técnicamente todos los DI y proyectos.
 
-## 5. [Servidor](https://github.com/Diegonmarti/Proyecto-CDC/tree/main/Servidor) 🗂️
+## 5. [Servidor](https://github.com/Diegonmarti/Proyecto-Retos-CDC/tree/main/Servidor) 🗂️
 
 El Srpint de Servidor se entregará en el segundo trimestre.
