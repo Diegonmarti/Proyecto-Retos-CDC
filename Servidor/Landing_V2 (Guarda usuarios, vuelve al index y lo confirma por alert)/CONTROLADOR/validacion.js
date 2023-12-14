@@ -149,7 +149,7 @@ function validarDNI() {
  * @returns esValido: Si el email es válido devuelve 
  * un booleano true
  */
- function validarEmail() {
+function validarEmail() {
     var esValido = false;
 
     var emailInput = document.getElementById('email');
@@ -157,9 +157,9 @@ function validarDNI() {
     var iconoEmail = document.getElementById('iconoEmail');
 
     var email = emailInput.value;
-    var terminacionesValidas = ["@gmail.com", "@aol.com", "@protonmail.com", "@zoho.com", "@gmail.co.uk", "@hotmail.com", "@yahoo.com", "@outlook.com", "@aol.com","@mac.com", "@icloud.com"];
+    var expresionRegularEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     var relleno = email !== '';
-    var correcto = terminacionesValidas.some(terminacion => email.endsWith(terminacion));
+    var correcto = expresionRegularEmail.test(email);
 
     // Restablecer clases de borde
     emailBorde.classList.remove("borde-rojo");
@@ -178,6 +178,7 @@ function validarDNI() {
 
     document.getElementById('emailObligatorio').style.color = relleno ? 'green' : 'red';
     document.getElementById('emailIncorrecto').style.color = correcto ? 'green' : 'red';
+
 
     // Mostrar mensajes de error al cargar la página
     document.getElementById('emailObligatorio').style.display = 'block';
@@ -318,46 +319,20 @@ function comprobarTodosBien() {
     console.log("repetirContraseniaValida:", repetirContraseniaValida);
 
     if (nombreValido && dniValido && emailValido && contraseñaValida && repetirContraseniaValida) {
-        console.log("Todas las validaciones son verdaderas.");
+        document.getElementById("enviar").removeAttribute("disabled");
+        cambiarColorBoton('#008000');
         return true;
     } else {
-        console.log("Al menos una validación es falsa.");
+        document.getElementById("enviar").setAttribute("disabled", true);
+        cambiarColorBoton('red');
         return false;
     }
 }
 
-
-  function mostrarErrores(mensaje) {
-    var mensajeErrorElement = document.getElementById('mensajeError');
-    mensajeErrorElement.textContent = mensaje;
-    mensajeErrorElement.style.display = 'block';
-    actualizarColorBoton('#FF0000'); // Actualiza el color del botón a rojo cuando hay errores
-  }
-
-  function cambiarColorBoton(color) {
+function cambiarColorBoton(color) {
     var botonEnviar = document.getElementById('enviar');
     botonEnviar.style.backgroundColor = color;
-  }
-
-  function actualizarColorBoton(color) {
-    cambiarColorBoton(color);
-  }
-
-  function enviarFormulario() {
-    if (comprobarTodosBien()) {
-      actualizarColorBoton('#008000'); // Actualiza el color del botón a verde oscuro si todo está bien
-      // Puedes agregar más lógica para enviar el formulario o mostrar un mensaje más elaborado aquí
-      alert('Formulario enviado correctamente');
-    } else {
-      // Actualiza el color del botón a rojo solo si hay errores
-    }
-  }
-
-
-
-
-
-
+}
 
 
 
@@ -696,7 +671,7 @@ function llevarACursos() {
     window.scrollTo({
         top: 0,
         behavior: 'smooth'
-        });
+    });
 }
 
 

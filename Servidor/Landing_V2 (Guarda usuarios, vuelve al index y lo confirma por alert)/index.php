@@ -1,22 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php include "INCLUDES/header.php"; ?>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FormularioV2</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="shortcut icon" href="Imágenes/image.png" id="logoDelNav">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap" rel="stylesheet" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet" />
-</head>
+<?php 
+  include "MODELO/BBDD.php";
+  require "CONTROLADOR/cargar.php";
+  $bbdd = new BBDD;
+
+  session_start();
+  
+  if (isset($_SESSION['mensaje'])) {
+    echo '<script>alert("' . $_SESSION['mensaje'] . '");</script>';
+
+    unset($_SESSION['mensaje']);
+}
+?>
 
 <body>
+
+<!---------------------------------- NAV ---------------------------------->
   <nav>
     <div id="primerTercioNav">
       <div href="#" class="menu-icon">
@@ -25,6 +25,9 @@
         <div class="bar"></div>
 
         <div class="menu-desplegable">
+          <a href="">Iniciar sesión</a>
+          <a href="">Registrarse</a>
+          <br>
           <a onclick="llevarACursos(), cambioDirecto(-1)" id="enlacePython">Python</a>
           <a onclick="llevarACursos(), cambioDirecto(0)" id="enlaceHtml">HTML</a>
           <a onclick="llevarACursos(), cambioDirecto(1)" id="enlaceJavaScript">CSS</a>
@@ -33,7 +36,7 @@
     </div>
 
     <div id="segundoTercioNav">
-      <img src="Imágenes/logosinfondo.png" id="logoDelNav" />
+      <img src="MULTIMEDIA/Imágenes/Logo_header.png" id="logoDelNav" />
     </div>
 
     <div id="tercerTercioNav">
@@ -41,6 +44,13 @@
       <label id="newsletterLabel" for="newsletter" class="seccionClicableNav">Newsletter</label>
     </div>
   </nav>
+
+
+
+
+
+
+<!---------------------------------- MAIN (CURSOS) ---------------------------------->
 
   <div id="app" class="app">
     <div class="cardList">
@@ -167,26 +177,42 @@
       </symbol>
     </svg>
 
-    <!-- partial -->
     <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.3/gsap.min.js"></script>
 
+
+
+
+
+
+<!---------------------------------- FORMULARIO ---------------------------------->
+
     <div id="imagenLogo">
-      <img src="Imágenes/image.png">
+      <img src="MULTIMEDIA/Imágenes/Icono.png">
     </div>
     
     <div id="lineaSeparadora"></div>  
     <div id="tituloPrincipal">APÚNTATE A NUESTRA NEWSLETTER</div>
 
+
+
     <main id="ContenedorPrincipal">
+      <!-- GIF -->
       <div id="ContenedorImagenYTitulo">
-          <img src="videos/Gif_Programando.gif" alt="GIF">
+          <img src="MULTIMEDIA/videos/Gif_Programando.gif" alt="GIF">
       </div>
 
+
+      <!-- FORMULARIO -->
       <div id="ContenedorFormulario">
-        <form name="formulario" method="post">
+        <form name="formulario" method="POST" action="CONTROLADOR/cargar.php">
+
+
+
+          <!-- NOMBRE -->
           <label>Nombre y apellido <span class="obligatorios"><b>(OBLIGATORIO)</b></span></label><br/>
           <div class="borde" id="nombreBorde">
+
             <input
               autocomplete="off"
               class="camposacentrar"
@@ -195,21 +221,25 @@
               name="nombre"
               onfocus="validarNombre(this)"
               oninput="validarNombre(this)"/>
+
             <div class="icono" id="iconoNombre"></div>
+
           </div>
+
           <p class="error" id="nombreObligatorio">
-            - El campo debe estar relleno
-          </p>
+            - El campo debe estar relleno </p>
           <p class="error" id="nombreYApellido">
-            - Debes introducir nombre y primer apellido únicamente
-          </p>
+            - Debes introducir nombre y primer apellido únicamente </p>
           <p class="error" id="nombreLetras">
-            - El nombre solo puede contener caracteres
-          </p><br/>
+            - El nombre solo puede contener caracteres </p>
+          <br>
 
 
+
+          <!-- NIF -->
           <label>NIF <span class="obligatorios"><b>(OBLIGATORIO)</b></span></label><br/>
           <div class="borde" id="nifBorde">
+
             <input
               autocomplete="off"
               class="camposacentrar"
@@ -219,123 +249,140 @@
               onfocus="validarDNI()"
               oninput="validarDNI()"/>
             <div class="icono" id="iconoNIF"></div>
+
           </div>
           <p class="error" id="nifObligatorio">
-            - El campo debe estar relleno
-          </p>
+            - El campo debe estar relleno </p>
           <p class="error" id="nifIncorrecto">
-            - El NIF es inválido
-          </p><br/>
+            - El NIF es inválido </p>
+          <br/>
 
+
+
+          <!-- CORREO -->
           <label>Email <span class="obligatorios"><b>(OBLIGATORIO)</b></span></label><br/>
           <div class="borde" id="emailBorde">
-          <input
-            autocomplete="off"
-            class="camposacentrar"
-            type="text"
-            id="email"
-            name="email"
-            onfocus="validarEmail()"
-            oninput="validarEmail()"/>
+
+            <input
+              autocomplete="off"
+              class="camposacentrar"
+              type="text"
+              id="email"
+              name="email"
+              onfocus="validarEmail()"
+              oninput="validarEmail()"/>
             <div class="icono" id="iconoEmail"></div>  
+
           </div>       
-           <p class="error" id="emailObligatorio">
-              - El campo debe estar relleno
-            </p>
-            <p class="error" id="emailIncorrecto">
-              - El email es inválido
-            </p><br/>          
+          <p class="error" id="emailObligatorio">
+            - El campo debe estar relleno </p>
+          <p class="error" id="emailIncorrecto">
+            - El email es inválido</p>
+          <br>          
 
 
 
-            <label>Contraseña <span class="obligatorios"><b>(OBLIGATORIO)</b></span></label><br />
-            <div class="borde" id="contraseniaBorde">
-              <input 
-                autocomplete="off"
-                class="camposacentrar" 
-                type="password"   
-                id="contrasenia" 
-                name="contrasenia"
-                onfocus="validarContrasenia()" 
-                oninput="validarContrasenia()" /><br />
-              <div class="icono" id="iconoContrasenia"></div>
-            </div>
-            <p class="error" id="contraseniaObligatorio" style="color: red; font-weight: bold; display: none">
-              - El campo debe estar relleno
-            </p>
-            <p class="error" id="contraseniaLongitud" style="color: red; font-weight: bold; display: none">
-              - La contraseña debe contener al menos 8 caracteres
-            </p>
-            <p class="error" id="contraseniaMinuscula" style="color: red; font-weight: bold; display: none">
-              - La contraseña debe contener al menos una minúscula
-            </p>
-            <p class="error" id="contraseniaMayuscula" style="color: red; font-weight: bold; display: none">
-              - La contraseña debe contener al menos una mayúscula
-            </p>
-            <p class="error" id="contraseniaNumero" style="color: red; font-weight: bold; display: none">
-              - La contraseña debe contener al menos un número
-            </p>
-            <p class="error" id="contraseniaSimbolo" style="color: red; font-weight: bold; display: none">
-              - La contraseña debe contener al menos un símbolo
-            </p><br />
+          <!-- CONTRASEÑA -->
+          <label>Contraseña <span class="obligatorios"><b>(OBLIGATORIO)</b></span></label><br />
+          <div class="borde" id="contraseniaBorde">
+
+            <input 
+              autocomplete="off"
+              class="camposacentrar" 
+              type="password"   
+              id="contrasenia" 
+              name="contrasenia"
+              onfocus="validarContrasenia()" 
+              oninput="validarContrasenia()" /><br />
+            <div class="icono" id="iconoContrasenia"></div>
+
+          </div>
+          <p class="error" id="contraseniaObligatorio">
+            - El campo debe estar relleno </p>
+          <p class="error" id="contraseniaLongitud">
+            - La contraseña debe contener al menos 8 caracteres </p>
+          <p class="error" id="contraseniaMinuscula">
+            - La contraseña debe contener al menos una minúscula </p>
+          <p class="error" id="contraseniaMayuscula">
+            - La contraseña debe contener al menos una mayúscula </p>
+          <p class="error" id="contraseniaNumero">
+            - La contraseña debe contener al menos un número </p>
+          <p class="error" id="contraseniaSimbolo">
+            - La contraseña debe contener al menos un símbolo </p>
+          <br>
+    
+
+
+          <!-- REPETIR CONTRASEÑA -->
+          <label>Repetir contraseña <span class="obligatorios"><b>(OBLIGATORIO)</b></span></label><br />
+          <div class="borde" id="contraseniaRepetirBorde">
+
+            <input 
+              autocomplete="off"
+              class="camposacentrar" 
+              type="password" 
+              id="repetirContrasenia" 
+              name="repetirContrasenia"
+              onfocus="validarRepetirContrasenia()" 
+              oninput="validarRepetirContrasenia()" /><br />
+            <div class="icono" id="iconoContraseniaRepetir"></div>
+
+          </div>
+          <p class="error" id="contraseniaRepetirObligatorio">
+            - El campo debe estar relleno </p>
+          <p class="error" id="contraseniaRepetirCoincide">
+            - La contraseña debe coincidir </p>
+          <br>
+    
+
+
+          <!-- NIVEL PROGRAMACIÓN -->
+          <label>Nivel de Programación</label><br />
+          <select class="camposacentrar" name="nivel" id="nivel">
+
+            <?php cargarNiveles() ?>
+
+          </select>
+          <br><br>
     
     
-            <label>Repetir contraseña <span class="obligatorios"><b>(OBLIGATORIO)</b></span></label><br />
-            <div class="borde" id="contraseniaRepetirBorde">
-              <input 
-                autocomplete="off"
-                class="camposacentrar" 
-                type="password" 
-                id="repetirContrasenia" 
-                name="repetirContrasenia"
-                onfocus="validarRepetirContrasenia()" 
-                oninput="validarRepetirContrasenia()" /><br />
-              <div class="icono" id="iconoContraseniaRepetir"></div>
-            </div>
-            <p class="error" id="contraseniaRepetirObligatorio" style="color: red; font-weight: bold; display: none">
-              - El campo debe estar relleno
-            </p>
-            <p class="error" id="contraseniaRepetirCoincide" style="color: red; font-weight: bold; display: none">
-              - La contraseña debe coincidir
-            </p><br />
-    
-            <label>Nivel de Programación</label><br />
-            <select class="camposacentrar" name="nivel" id="nivel">
-              <option value="principiante">Principiante</option>
-              <option value="junior">Junior</option>
-              <option value="senior">Senior</option>
-              <option value="sinconocimientos">No Sabe Nada</option>
-            </select><br /><br />
+
+          <!-- FECHA DE NACIMIENTO -->
+          <label>Fecha de Nacimiento</label><br />
+          <input class="camposacentrar" type="date" name="fechanacimiento" />
+          <br><br>
     
     
-            <label>Fecha de Nacimiento</label><br />
-            <input class="camposacentrar" type="date" name="fechanacimiento" /><br /><br />
+
+          <!-- PAÍS -->
+          <label>País</label><br />
+          <select class="camposacentrar" name="paises">
+            <?php cargarPaises(); ?>
+          </select>
+          <br><br>
     
-    
-            <label>País</label><br />
-            <select class="camposacentrar" name="paises">
-              <option value="sinPais">Prefiero no decirlo</option>
-              <option value="españa">España</option>
-              <option value="noruega">Noruega</option>
-              <option value="francia">Francia</option>
-              <option value="francia">Otro</option>
-            </select><br /><br />
-    
-            <label>¿Quieres activar las notificaciones?</label>
-            <input class="camposacentrar" type="checkbox" name="notificaciones" /><br />
-    
-            <label>¿Quieres subscribirte a la revista digital?</label>
-            <input class="camposacentrar" type="checkbox" name="revista" /><br /><br />
-            <button type="button" id="enviar" onclick="enviarFormulario()">Enviar</button>
-            <p id="mensajeError" class="error" style="color: red; font-weight: bold; display: none"></p>
-            <p id="mensajeExito" style="color: green; font-weight: bold; display: none"></p>
-            <span id="formularioError" style="color: red"></span><br />
+
+
+
+          <!-- CHECKBOXES -->
+          <label>¿Quieres activar las notificaciones?</label>
+          <input class="camposacentrar" type="checkbox" name="notificaciones" value="1" /><br />
+  
+          <label>¿Quieres subscribirte a la revista digital?</label>
+          <input class="camposacentrar" type="checkbox" name="revista" value="1" /><br /><br />
+
+
+
+          <!-- BOTÓN ENVIAR -->
+          <button type="submit" id="enviar" name="enviar" onmouseover="comprobarTodosBien()">Enviar</button>
+          <p id="mensajeError" class="error"></p>
+          <p id="mensajeExito" style="color: green; font-weight: bold; display: none"></p>
+          <span id="formularioError" style="color: red"></span>
+          <br>
             
             
           </form>
         </div>
       </main>
     </body>
-    <script src="validacion.js"></script>
-    
-    </html>
+  <script src="CONTROLADOR/validacion.js"></script>
