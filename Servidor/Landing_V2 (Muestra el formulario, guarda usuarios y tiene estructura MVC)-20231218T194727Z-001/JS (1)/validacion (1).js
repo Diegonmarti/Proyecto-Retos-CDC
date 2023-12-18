@@ -334,11 +334,6 @@ function cambiarColorBoton(color) {
     botonEnviar.style.backgroundColor = color;
 }
 
-
-
-
-console.clear();
-
 const { gsap, imagesLoaded } = window;
 
 const buttons = {

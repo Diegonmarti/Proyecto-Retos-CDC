@@ -7,7 +7,7 @@
   <title>FormularioV2</title>
 
   <!----------------------- ESTILO --------------------------->
-  <link rel='stylesheet' href='VISTA/style.css' />
+  <link rel='stylesheet' href='STYLE/style.css' />
 
   <!----------------------- ICONO --------------------------->
   <link rel='shortcut icon' href='MULTIMEDIA/Imágenes/Icono.png' id='logoDelNav'>
@@ -19,5 +19,6 @@
   <link href='https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap' rel='stylesheet' />
   <link href='https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap' rel='stylesheet' />
   
-</head>";
+</head>
+<body>;
 

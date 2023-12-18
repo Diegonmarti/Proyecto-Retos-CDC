@@ -1,21 +1,5 @@
 <?php include "INCLUDES/header.php"; ?>
-
-<?php 
-  include "MODELO/BBDD.php";
-  require "CONTROLADOR/cargar.php";
-  $bbdd = new BBDD;
-
-  session_start();
   
-  if (isset($_SESSION['mensaje'])) {
-    echo '<script>alert("' . $_SESSION['mensaje'] . '");</script>';
-
-    unset($_SESSION['mensaje']);
-}
-?>
-
-<body>
-
 <!---------------------------------- NAV ---------------------------------->
   <nav>
     <div id="primerTercioNav">
@@ -40,8 +24,8 @@
     </div>
 
     <div id="tercerTercioNav">
-      <label id="cursosLabel" for="cursos" class="seccionClicableNav">Cursos</label>
-      <label id="newsletterLabel" for="newsletter" class="seccionClicableNav">Newsletter</label>
+      <div id="cursosLabel" class="seccionClicableNav">Cursos</div>
+      <div id="newsletterLabel" class="seccionClicableNav">Newsletter</div>
     </div>
   </nav>
 
@@ -141,6 +125,7 @@
       </div>
     </div>
 
+
     <div class="loading__wrapper">
       <div class="loader--text">Loading...</div>
       <div class="loader">
@@ -178,14 +163,15 @@
     </svg>
 
     <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.3/gsap.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.3/gsap.min.js"></script>ç
 
 
 
 
 
 <!---------------------------------- FORMULARIO ---------------------------------->
+
+<script src="JS/validacion.js"></script>
 
     <div id="imagenLogo">
       <img src="MULTIMEDIA/Imágenes/Icono.png">
@@ -205,12 +191,12 @@
 
       <!-- FORMULARIO -->
       <div id="ContenedorFormulario">
-        <form name="formulario" method="POST" action="CONTROLADOR/cargar.php">
+        <form name="formulario" method="POST" action="<?php $modelo -> guardarUsuario() ?>">
 
 
 
           <!-- NOMBRE -->
-          <label>Nombre y apellido <span class="obligatorios"><b>(OBLIGATORIO)</b></span></label><br/>
+          <label for="nombre">Nombre y apellido <span class="obligatorios"><b>(OBLIGATORIO)</b></span></label><br/>
           <div class="borde" id="nombreBorde">
 
             <input
@@ -237,7 +223,7 @@
 
 
           <!-- NIF -->
-          <label>NIF <span class="obligatorios"><b>(OBLIGATORIO)</b></span></label><br/>
+          <label for="nif">NIF <span class="obligatorios"><b>(OBLIGATORIO)</b></span></label><br/>
           <div class="borde" id="nifBorde">
 
             <input
@@ -260,7 +246,7 @@
 
 
           <!-- CORREO -->
-          <label>Email <span class="obligatorios"><b>(OBLIGATORIO)</b></span></label><br/>
+          <label for="email">Email <span class="obligatorios"><b>(OBLIGATORIO)</b></span></label><br/>
           <div class="borde" id="emailBorde">
 
             <input
@@ -283,7 +269,7 @@
 
 
           <!-- CONTRASEÑA -->
-          <label>Contraseña <span class="obligatorios"><b>(OBLIGATORIO)</b></span></label><br />
+          <label for="contrasenia">Contraseña <span class="obligatorios"><b>(OBLIGATORIO)</b></span></label><br />
           <div class="borde" id="contraseniaBorde">
 
             <input 
@@ -314,7 +300,7 @@
 
 
           <!-- REPETIR CONTRASEÑA -->
-          <label>Repetir contraseña <span class="obligatorios"><b>(OBLIGATORIO)</b></span></label><br />
+          <label for="repetirContrasenia">Repetir contraseña <span class="obligatorios"><b>(OBLIGATORIO)</b></span></label><br />
           <div class="borde" id="contraseniaRepetirBorde">
 
             <input 
@@ -337,27 +323,59 @@
 
 
           <!-- NIVEL PROGRAMACIÓN -->
-          <label>Nivel de Programación</label><br />
+          <label for="nivel">Nivel de Programación</label><br />
           <select class="camposacentrar" name="nivel" id="nivel">
+          <?php
+            $primero = true; 
+            $totalNiveles = count($listaNiveles);
+            $contador = 0;
 
-            <?php cargarNiveles() ?>
+            while($contador < $totalNiveles) { 
+              $nivel = $listaNiveles[$contador];
+              if ($primero) {
+                echo "<option value='$nivel[0]' selected> $nivel[1]</option>";
+                $primero = false;
 
+              } else {
+                  echo "<option value='$nivel[0]'> $nivel[1]</option>";
+              }
+
+              $contador++;
+            }
+          ?>
           </select>
           <br><br>
     
     
 
           <!-- FECHA DE NACIMIENTO -->
-          <label>Fecha de Nacimiento</label><br />
-          <input class="camposacentrar" type="date" name="fechanacimiento" />
+          <label for="fechanacimiento">Fecha de Nacimiento</label><br />
+          <input class="camposacentrar" type="date" name="fechanacimiento" id="fechanacimiento"/>
           <br><br>
     
     
 
           <!-- PAÍS -->
-          <label>País</label><br />
-          <select class="camposacentrar" name="paises">
-            <?php cargarPaises(); ?>
+          <label for="paises">País</label><br />
+          <select class="camposacentrar" name="paises" id="paises">
+            <?php
+              $primero = true; 
+              $totalPaises = count($listaPaises);
+              $contador = 0;
+
+              while($contador < $totalPaises) { 
+                $pais = $listaPaises[$contador];
+                if ($primero) {
+                  echo "<option value='$pais[0]' selected> $pais[1]</option>";
+                  $primero = false;
+
+                } else {
+                    echo "<option value='$pais[0]'> $pais[1]</option>";
+                }
+
+                $contador++;
+              }
+            ?>
           </select>
           <br><br>
     
@@ -365,11 +383,11 @@
 
 
           <!-- CHECKBOXES -->
-          <label>¿Quieres activar las notificaciones?</label>
-          <input class="camposacentrar" type="checkbox" name="notificaciones" value="1" /><br />
+          <label for="notificaciones">¿Quieres activar las notificaciones?</label>
+          <input class="camposacentrar" type="checkbox" id="notificaciones" name="notificaciones" value="1" /><br />
   
-          <label>¿Quieres subscribirte a la revista digital?</label>
-          <input class="camposacentrar" type="checkbox" name="revista" value="1" /><br /><br />
+          <label for="revista">¿Quieres subscribirte a la revista digital?</label>
+          <input class="camposacentrar" type="checkbox" id="revista" name="revista" value="1" /><br /><br />
 
 
 
@@ -384,5 +402,8 @@
           </form>
         </div>
       </main>
-    </body>
-  <script src="CONTROLADOR/validacion.js"></script>
+  </body>
+  
+</html>
+    
+  
