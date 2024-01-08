@@ -1,0 +1,1 @@
+Inicio   Controlador.php  (require_once  "MODELO/Model.php")      modelo.php( $listaPaises =  cargarPaises(); $listaNiveles =  cargarNiveles(); include vistaLanding.php  include header.php (HTML content) Validación JS ) -->   model.php     (guardarUsuario() cargarPaises()  cargarNiveles() Conexión a BBDD
