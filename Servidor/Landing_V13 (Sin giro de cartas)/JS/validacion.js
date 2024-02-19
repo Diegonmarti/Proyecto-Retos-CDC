@@ -541,22 +541,22 @@ function changeInfo(direction) {
     }
 }
 
-function updateCard(e) {
-    const card = e.currentTarget;
-    const box = card.getBoundingClientRect();
-    const centerPosition = {
-        x: box.left + box.width / 2,
-        y: box.top + box.height / 2,
-    };
-    let angle = Math.atan2(e.pageX - centerPosition.x, 0) * (35 / Math.PI);
-    gsap.set(card, {
-        "--current-card-rotation-offset": `${angle}deg`,
-    });
-    const currentInfoEl = cardInfosContainerEl.querySelector(".current--info");
-    gsap.set(currentInfoEl, {
-        rotateY: `${angle}deg`,
-    });
-}
+// function updateCard(e) {
+//     const card = e.currentTarget;
+//     const box = card.getBoundingClientRect();
+//     const centerPosition = {
+//         x: box.left + box.width / 2,
+//         y: box.top + box.height / 2,
+//     };
+//     let angle = Math.atan2(e.pageX - centerPosition.x, 0) * (35 / Math.PI);
+//     gsap.set(card, {
+//         "--current-card-rotation-offset": `${angle}deg`,
+//     });
+//     const currentInfoEl = cardInfosContainerEl.querySelector(".current--info");
+//     gsap.set(currentInfoEl, {
+//         rotateY: `${angle}deg`,
+//     });
+// }
 
 function resetCardTransforms(e) {
     const card = e.currentTarget;
@@ -571,7 +571,7 @@ function resetCardTransforms(e) {
 
 function initCardEvents() {
     const currentCardEl = cardsContainerEl.querySelector(".current--card");
-    currentCardEl.addEventListener("pointermove", updateCard);
+    // currentCardEl.addEventListener("pointermove", updateCard);
     currentCardEl.addEventListener("pointerout", (e) => {
         resetCardTransforms(e);
     });
@@ -580,7 +580,7 @@ function initCardEvents() {
 initCardEvents();
 
 function removeCardEvents(card) {
-    card.removeEventListener("pointermove", updateCard);
+    // card.removeEventListener("pointermove", updateCard);
 }
 
 function init() {

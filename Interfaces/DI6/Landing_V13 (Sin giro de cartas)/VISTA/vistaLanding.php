@@ -19,7 +19,7 @@
       </div>
     </div>
 
-    <div id="segundoTercioNav">
+    <div id="segundoTercioNav">º
       <img src="MULTIMEDIA/Imágenes/Logo_header.png" id="logoDelNav" />
     </div>
 
