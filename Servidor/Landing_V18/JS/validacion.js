@@ -663,12 +663,10 @@ waitForImages();
 
 
 function llevarACursos() {
-    window.scrollTo(
-        0, document.body.scrollHeight - 5, {
-            behavior: 'smooth'
-        }
-        
-    );
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
 }
 
 
@@ -682,18 +680,19 @@ document.getElementById('newsletterLabel').addEventListener('click', function(ev
         behavior: 'smooth'
       });
     }
-  });
-
-document.getElementById('cursosLabel').addEventListener('click', function(event) {
-        event.preventDefault();
-
-        const targetElement = document.getElementById('app');
-        if (targetElement) {
-            window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-            });
-        }
 });
+
+document.getElementById('condicionesLabel').addEventListener('click', function(event) {
+    event.preventDefault();
+
+    const targetElement = document.getElementById('footer');
+    if (targetElement) {
+      window.scrollTo({
+        top: targetElement.offsetTop,
+        behavior: 'smooth'
+      });
+    }
+});
+
 
 

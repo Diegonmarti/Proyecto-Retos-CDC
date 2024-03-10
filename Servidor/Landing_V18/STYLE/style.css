@@ -737,7 +737,6 @@ footer{
     }
         .textoTerminoDesplegado{
             width: 80%;
-            text-align: center;
             border: solid black;
             padding: 20px;
             box-shadow: 0 0 8px rgba(0, 0, 0, 0.384);

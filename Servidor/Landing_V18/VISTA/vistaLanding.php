@@ -9,12 +9,14 @@
         <div class="bar"></div>
 
         <div class="menu-desplegable">
-          <a href="">Iniciar sesión</a>
-          <a href="">Registrarse</a>
+          <optgroup label="Apartados"></optgroup>
+          <a id="newsletterLabel">Newsletter</a>
+          <a id="condicionesLabel">Condiciones legales</a>
           <br>
-          <a onclick="llevarACursos(), cambioDirecto(-1)" id="enlacePython">Python</a>
-          <a onclick="llevarACursos(), cambioDirecto(0)" id="enlaceHtml">HTML</a>
-          <a onclick="llevarACursos(), cambioDirecto(1)" id="enlaceJavaScript">CSS</a>
+          <optgroup label="Cursos"></optgroup>
+          <a onclick="llevarACursos(), cambioDirecto(-1)" id="enlacePython">PYTHON</a>
+          <a onclick="llevarACursos(),cambioDirecto(0)" id="enlaceHtml">HTML/CSS</a>
+          <a onclick="llevarACursos(), cambioDirecto(1)" id="enlaceJavaScript">JAVASCRIPT</a>
         </div>
       </div>
     </div>
@@ -25,8 +27,7 @@
 
 
     <form id="tercerTercioNav" action="CONTROLADOR/cambioEstadoSesion.php" method="POST">
-      <input type="submit" name="inicioSesion" class="seccionClicableNav" value="Iniciar sesión">
-      <div id="newsletterLabel" class="seccionClicableNav">Newsletter</div>
+      <input type="submit" name="inicioSesion" class="seccionClicableNav" value="Tienda">
     </form>
 
   </nav>
@@ -36,7 +37,7 @@
 <!---------------------------------- MAIN (CURSOS) ---------------------------------->
 
   <div id="app" class="app">
-    <div class="cardList">
+    <div id="listaCursos" class="cardList">
       <button class="cardList__btn btn btn--left">
         <div class="icon">
           <svg>
@@ -423,7 +424,7 @@
 
               <div id="avisoLegal" class="terminoDesplegado">
                 <p class="textoTerminoDesplegado">
-                  <b>Aviso Legal:</b><br>
+                  <b style="font-size: 2em">Aviso Legal:</b><br>
                   <br>
                   El presente aviso legal regula el uso del sitio web [www.CDC.com] 
                   (en adelante, el "CDC"), del que es titular [TresW Group], 
@@ -433,7 +434,7 @@
 
               <div id="condicinonesUso" class="terminoDesplegado">
                 <p class="textoTerminoDesplegado">
-                  <b>Condiciones de Uso:</b><br>
+                  <b style="font-size: 2em">Condiciones de Uso:</b><br>
                   <br>
                   El acceso y uso del Sitio Web atribuye la condición de usuario y 
                   supone la aceptación plena y sin reservas por parte del usuario de 
@@ -456,7 +457,7 @@
 
               <div id="politicaPrivacidad" class="terminoDesplegado">
                 <p class="textoTerminoDesplegado">
-                  <b>Política de Privacidad</b><br>
+                  <b style="font-size: 2em">Política de Privacidad</b><br>
                   <br>
                   Esta Política de Privacidad describe cómo [Nombre de la Empresa] (en adelante, 
                   "nosotros", "nuestro/a" o "la Empresa") recopila, utiliza y protege la información 
@@ -465,7 +466,7 @@
                   descritas en esta política.
                   <br>
                   <br>
-                  1. Información que Recopilamos <br>
+                  <b>1. Información que Recopilamos</b> <br>
                   1.1. Recopilamos información personal que nos proporcionas voluntariamente cuando 
                   te registras en nuestro Sitio Web, realizas una compra, participas en encuestas o 
                   concursos, o te comunicas con nosotros por correo electrónico u otros medios.
@@ -480,7 +481,8 @@
                   tipo de navegador, páginas visitadas, tiempo de visita y otros datos de uso.
                   <br>
                   <br>
-                  2. Uso de la Información
+
+                  <b>2. Uso de la Información</b>
                   <br>
                   2.1. Utilizamos la información que recopilamos para proporcionarte nuestros 
                   servicios y productos, procesar tus pedidos, responder a tus consultas y brindarte 
@@ -490,9 +492,9 @@
                   nuestro Sitio Web, mejorar nuestros productos y servicios, y enviar comunicaciones 
                   de marketing y promociones que creemos que pueden ser de tu interés.
                   <br>
-                  3. Compartir de la Información
                   <br>
-                  <br>
+
+                  <b>3. Compartir de la Información</b><br>
                   3.1. No vendemos, alquilamos ni compartimos tu información personal con terceros 
                   con fines comerciales, excepto cuando sea necesario para proporcionarte nuestros 
                   servicios o cumplir con obligaciones legales.
@@ -502,7 +504,8 @@
                   como procesadores de pagos, servicios de envío y proveedores de alojamiento web.
                   <br>
                   <br>
-                  4. Seguridad de la Información
+
+                  <b>4. Seguridad de la Información</b>
                   <br>
                   4.1. Implementamos medidas de seguridad técnicas, administrativas y físicas para 
                   proteger la información personal que recopilamos y mantenemos contra el acceso no 
@@ -512,7 +515,8 @@
                   completamente segura, y no podemos garantizar la seguridad absoluta de tu información.
                   <br>
                   <br>
-                  5. Tus Derechos
+
+                  <b>5. Tus Derechos</b>
                   <br>
                   5.1. Tienes derecho a acceder, corregir, actualizar o eliminar tu información 
                   personal en cualquier momento. También puedes optar por no recibir comunicaciones de 
@@ -520,7 +524,8 @@
                   incluidas en dichas comunicaciones.
                   <br>
                   <br>
-                  6. Cambios en esta Política de Privacidad
+
+                  <b>6. Cambios en esta Política de Privacidad</b><br>
                   6.1. Nos reservamos el derecho de actualizar esta Política de Privacidad en 
                   cualquier momento y sin previo aviso. Te notificaremos cualquier cambio significativo 
                   publicando una versión actualizada en nuestro Sitio Web.
@@ -531,7 +536,8 @@
                   de dichos cambios.
                   <br>
                   <br>
-                  7. Contacto <br>
+
+                  <b>7. Contacto</b> <br>
                   Si tienes alguna pregunta sobre esta Política de Privacidad o sobre nuestras 
                   prácticas de privacidad, puedes ponerte en contacto con nosotros a través de 
                   [Dirección de Contacto] o enviando un correo electrónico a [Correo Electrónico de 
@@ -544,7 +550,7 @@
 
               <div id="terminosServicio" class="terminoDesplegado">
                 <p class="textoTerminoDesplegado">
-                  <b>Términos de Servicio</b><br>
+                  <b style="font-size: 2em">Términos de Servicio</b><br>
                   <br>
                   Estos términos de servicio regulan el acceso y uso del Sitio Web, así 
                   como la adquisición de nuestros cursos de programación y otros servicios 
@@ -552,7 +558,7 @@
                   términos en su totalidad. Si no estás de acuerdo con alguna parte de estos 
                   términos, por favor, no utilices nuestro Sitio Web. <br>
                   <br>
-                  1. Uso del Sitio Web: <br>
+                  <b>1. Uso del Sitio Web:</b> <br>
                   1.1. El acceso al Sitio Web está permitido de forma temporal y nos reservamos 
                   el derecho de retirar o modificar los servicios que ofrecemos sin previo aviso. 
                   No nos hacemos responsables si por cualquier razón el Sitio Web no está 
@@ -566,7 +572,7 @@
                   <br>
                   <br>
 
-                  2. Cursos y Contenidos
+                  <b>2. Cursos y Contenidos</b>
                   <br>
                   2.1. Los cursos de programación y otros contenidos disponibles en el Sitio Web 
                   están sujetos a cambios y actualizaciones sin previo aviso.
