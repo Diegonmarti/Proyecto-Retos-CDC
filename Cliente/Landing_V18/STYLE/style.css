@@ -1,0 +1,810 @@
+body {
+    background-color: #292929;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+/* ================================ HEADER ================================ */
+header{
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    background-color: #FFFFFF;
+}
+
+nav{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    border-bottom: solid #292929;
+    border-width: 2px;
+
+    /* Fondo transparente */
+    background: white;
+    box-shadow: 0 4px 8px rgb(255, 255, 255, 0.26);
+
+    /* Se mantiene en pantala cuando se scrollea */
+    z-index: 1000;
+    position: fixed;
+
+    font-family: 'Kanit', sans-serif;
+}
+
+
+    #primerTercioNav{
+        width: 33%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+        /* ICONO */
+        .menu-icon {
+            width: 5%;
+            margin-left: 7%;
+            margin-top: 3.2%;
+            cursor: pointer;
+        }
+
+        .bar {
+            width: 100%;
+            height: 2px;
+            background-color: #333;
+            margin: 6px 0;
+            transition: 0.3s;
+        }
+
+            /* Animación del icono del desplegable */
+            .menu-icon:hover .bar:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .menu-icon:hover .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-icon:hover .bar:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+
+        /* DESPLEGABLE */
+        .menu-desplegable {
+            width: 10%;
+            position: absolute;
+            top: 8%;
+            left: 0.5%;
+            padding: 1%;
+
+            display: none;
+            visibility: hidden;
+            background-color: white;
+            border: solid;
+            border-width: 0.1px;
+            border-radius: 10px;
+            box-shadow: -10px 10px 20px rgb(0, 0, 0);
+            z-index: 1;
+        }
+
+            /* Estilos para los elementos del menú desplegable */
+            .menu-desplegable a {
+                transition: color 0.2s ease;
+                
+                display: block;
+                padding: 1%;
+                margin: 1%;
+
+                text-align: center;
+                color: #333;
+                text-decoration: none;
+                margin-top: 2%;
+            }
+
+            .menu-desplegable a:hover {
+                background-color:  rgba(0, 0, 0, 0.158);
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+                #enlacePython:hover{
+                    color: #F37100;
+                }
+
+                #enlaceJavaScript:hover{
+                    color: #F37100;
+                }
+
+                #enlaceHtml:hover{
+                    color: #F37100;
+                }
+
+        /* Mostrar el menú desplegable al hacer hover sobre el contenedor */
+        .menu-icon:hover .menu-desplegable{
+            display: block;
+            visibility: visible;
+        }
+
+                       
+    #segundoTercioNav{
+        width: 33%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+        #logoDelNav{
+            width: 10%;
+            margin: 2%;
+            margin-left: 45%;
+        }
+
+                                         
+    #tercerTercioNav{
+        width: 33%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        justify-content: right;
+        align-items: center;
+    }
+        .seccionClicableNav{
+            font-family: 'Kanit', sans-serif;
+            font-size: 1em;
+            background: none;
+            border: none;
+            transition: color 0.2s ease;
+            padding-top: 1%;
+            padding-bottom: 1%;
+            padding-left: 3%;
+            padding-right: 3%;
+            margin: 2.5%;
+            color: black;
+        }
+
+        .seccionClicableNav:hover{
+            background-color: rgba(0, 0, 0, 0.158);
+            color: #F37100;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+/* =========================================================================== */
+
+
+/* ================================ APARTADO CURSOS ================================ */
+
+.app {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 450px;
+}
+
+.app__bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -5;
+    filter: blur(8px);
+    pointer-events: none;
+    user-select: none;
+    overflow: hidden;
+}
+
+.app__bg::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 1;
+    opacity: 0.8;
+}
+
+.app__bg__image {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) translateX(var(--image-translate-offset, 0));
+    width: 180%;
+    height: 180%;
+    transition: transform 1000ms ease, opacity 1000ms ease;
+    overflow: hidden;
+}
+
+.app__bg__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.app__bg__image.current--image {
+    opacity: 1;
+    --image-translate-offset: 0;
+}
+
+.app__bg__image.previous--image,
+.app__bg__image.next--image {
+    opacity: 0;
+}
+
+.app__bg__image.previous--image {
+    --image-translate-offset: -25%;
+}
+
+.app__bg__image.next--image {
+    --image-translate-offset: 25%;
+}
+
+.cardList {
+    position: absolute;
+    width: calc(3 * var(--card-width));
+    height: auto;
+}
+
+.cardList__btn {
+    background-color: white;
+    border-radius: 10px;
+    color: black;
+
+    --btn-size: 70px;
+    width: var(--btn-size);
+    height: var(--btn-size);
+    
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+
+    transition: transform 0.2s ease;
+    
+}
+
+.cardList__btn:hover{
+    transform: scale(1.2) translateY(-50%);
+    
+}
+
+.cardList__btn.btn--left {
+    left: -11%;
+}
+
+.cardList__btn.btn--right {
+    right: -11%;
+}
+
+.cardList__btn .icon {
+    width: 100%;
+    height: 100%;
+}
+
+.cardList__btn .icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.cardList .cards__wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    perspective: 1000px;
+}
+
+.card {
+    overflow: hidden;
+    --card-translateY-offset: 100vh;
+    position: absolute;
+
+
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) translateX(var(--card-translateX-offset)) translateY(var(--card-translateY-offset)) rotateY(var(--card-rotation-offset)) scale(var(--card-scale-offset));
+    display: inline-block;
+    width: var(--card-width);
+    height: var(--card-height);
+    transition: transform var(--card-transition-duration) var(--card-transition-easing);
+    user-select: none;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 1;
+    transition: opacity var(--card-transition-duration) var(--card-transition-easing);
+    opacity: calc(1 - var(--opacity));
+}
+
+.card__image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.card__image img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card.current--card {
+    --current-card-rotation-offset: 0;
+    --card-translateX-offset: 0;
+    --card-rotation-offset: var(--current-card-rotation-offset);
+    --card-scale-offset: 1.2;
+    --opacity: 1;
+    color: white;
+}
+
+.card.previous--card {
+    --card-translateX-offset: calc(-1 * var(--card-width) * 1.1);
+    --card-rotation-offset: 25deg;
+}
+
+.card.next--card {
+    --card-translateX-offset: calc(var(--card-width) * 1.1);
+    --card-rotation-offset: -25deg;
+}
+
+.card.previous--card,
+.card.next--card {
+    --card-scale-offset: 0.9;
+    --opacity: 1;
+}
+
+.infoList {
+    position: absolute;
+    width: calc(3 * var(--card-width));
+    height: var(--card-height);
+    pointer-events: none;
+}
+
+.infoList .info__wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
+.info {
+    margin-bottom: calc(var(--card-height) / 8);
+    margin-left: calc(var(--card-width) / 1.5);
+    transform: translateZ(2rem);
+    transition: transform var(--card-transition-duration) var(--card-transition-easing);
+}
+
+.info .text {
+    position: relative;
+    font-family: "Montserrat";
+    font-size: calc(var(--card-width) * var(--text-size-offset, 0.2));
+    white-space: nowrap;
+    color: #fff;
+    width: fit-content;
+}
+
+.info .name,
+.info .location {
+    text-transform: uppercase;
+}
+
+.info .location {
+    font-weight: 800;
+}
+
+.info .location {
+    --mg-left: 40px;
+    --text-size-offset: 0.12;
+    font-weight: 600;
+    margin-left: var(--mg-left);
+    margin-bottom: calc(var(--mg-left) / 2);
+    padding-bottom: 0.8rem;
+}
+
+.info .location::before,
+.info .location::after {
+    content: "";
+    position: absolute;
+    background: #fff;
+    left: 0%;
+    transform: translate(calc(-1 * var(--mg-left)), -50%);
+}
+
+.info .location::before {
+    top: 50%;
+    width: 20px;
+    height: 5px;
+}
+
+.info .location::after {
+    bottom: 0;
+    width: 60px;
+    height: 2px;
+}
+
+.info .description {
+    --text-size-offset: 0.065;
+    font-weight: 500;
+    
+}
+
+.info.current--info {
+    opacity: 1;
+    display: block;
+    
+}
+
+.info.previous--info,
+.info.next--info {
+    opacity: 0;
+    display: none;
+}
+
+.loading__wrapper {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    z-index: 200;
+}
+
+.loading__wrapper .loader--text {
+    color: #fff;
+    font-family: "Montserrat";
+    font-weight: 500;
+    margin-bottom: 1.4rem;
+}
+
+.loading__wrapper .loader {
+    position: relative;
+    width: 200px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.loading__wrapper .loader span {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: red;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+@media only screen and (min-width: 800px) {
+    :root {
+        --card-width: 350px; /* Ajusta este valor según tus necesidades */
+        --card-height: 500px; /* Ajusta este valor según tus necesidades */
+    }
+}
+
+
+.support {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    padding: 10px;
+    display: flex;
+}
+
+.support a {
+    margin: 0 10px;
+    color: #fff;
+    font-size: 1.8rem;
+    backface-visibility: hidden;
+    transition: all 150ms ease;
+}
+
+.support a:hover {
+    transform: scale(1.1);
+}
+
+/* =========================================================================== */
+
+
+/* ============================= FORMULARIO ================================== */
+
+#imagenLogo{
+    width: 45%;
+    display: none;
+}
+
+#lineaSeparadora{
+    width: 60%;
+    height: 2px;
+
+    margin-left: 20%;
+    margin-top: 50vh;
+    margin-bottom: 10vh;
+
+    background-color: black;
+}
+
+#tituloPrincipal {
+    width: 100%;
+
+    text-align: center;
+    font-size: 4em;
+    color: white;
+    /* font-family: "Rockwell"; */
+    padding: 1vh;
+}
+
+#ContenedorPrincipal {
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 4%;
+    margin-bottom: 3%;
+    display: flex;
+    overflow: hidden;
+    background: transparent;
+}
+
+    #ContenedorImagenYTitulo {
+        width: 50%;
+        overflow: hidden;
+        z-index: 0;
+        display: flex;
+        border-radius: 10px;
+    }
+
+    #ContenedorFormulario {
+        width: 50%;
+        max-height: 650px;
+        /* Puedes ajustar según sea necesario */
+        border-radius: 10px;
+        overflow-y: auto;
+        z-index: 0;
+
+        background-color: transparent;
+    }
+
+        #formularioRegistro {
+            margin-top: 2%;
+            margin-left: 10%;
+            width: 80%;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="date"],
+        input[type="label"],
+        select {
+            width: 100%;
+            
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus,
+        input[type="date"]:focus,
+        input[type="label"]:focus,
+        select:focus {
+            outline: none;    
+        }
+
+        label{
+            color: white;
+        }
+
+        #enviar {
+            justify-content: center;
+            padding: 10px;
+            background-color: #F37100;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 50%;
+            font-size: 1.2em;
+        }
+
+        #enviar:hover {
+            background-color: #f37100c5;
+        }
+
+
+/* ---- CONFIGURACIÓN DE MENSAJES DE ERROR ---- */
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+button:focus {
+    outline: none;
+    border: none;
+}
+
+.obligatorios{
+    color: red;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+    display: none;
+}
+
+.borde {
+    border: 2px solid transparent;
+    position: relative;
+}
+
+.borde-rojo {
+    border-color: red;
+}
+.borde-verde {
+    border-color: green;
+}
+
+.icono {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+    font-size: 1.2em;
+}
+
+.icono-correcto::before {
+    content: '\2713'; /* Código Unicode para la marca de verificación */
+    color: green;
+}
+
+.icono-incorrecto::before {
+    content: '\2717'; /* Código Unicode para la cruz */
+    color: red;
+}
+
+/* =========================================================================== */
+
+/* ================================ FOOTER ================================ */
+footer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    background: white;
+    color: black;
+
+    width: 100vw;
+    border-top: solid black;
+    border-width: 1px;
+    box-shadow: 0 -2px 8px rgb(255, 255, 255, 0.26);
+
+    font-family: 'Kanit', sans-serif;
+
+}
+    .footerCentral{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        margin-top: 15px;
+        margin-bottom: 15px;
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+        .enlaceTerminos{
+            cursor: pointer;
+            text-decoration: none;
+            color: black;
+            transition: color 0.2s ease;
+        }
+        .enlaceTerminos:hover{
+            color: #F37100;
+        }
+    .terminoDesplegado{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        width: 100%;
+        justify-content: center;
+    }
+        .textoTerminoDesplegado{
+            width: 80%;
+            border: solid black;
+            padding: 20px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.384);
+        }
+    #avisoLegal, #condicinonesUso, #politicaPrivacidad, #terminosServicio{
+        display: none;
+    }
+    
+
+
+/*====================================================================================
+                                VERSIÓN MÓVIL
+==================================================================================== */
+
+@media screen and (max-width: 767px) {
+    nav {
+        display: none;
+    }
+
+    .app {
+        display: none;
+    }
+
+    #ContenedorImagenYTitulo {
+        display: none;
+    }
+    #ContenedorFormulario {
+        width: 100%;
+    }
+
+    .loading__wrapper {
+        display: none;
+    }
+
+    #imagenLogo {
+        display: flex;
+        justify-content: center;
+        width: 45%;
+        border: red;
+    }
+
+    body{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #lineaSeparadora{
+        display: none;
+    }
+
+    #tituloPrincipal {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+        color: rgb(166, 170, 170);
+        font-size: 3em;
+        margin-top: 10%;
+    }
+
+    #ContenedorFormulario{
+        height: fit-content;
+        max-height: fit-content;
+        overflow-y: hidden;
+    }
+    form{
+        margin-left: 5%;
+        height: fit-content;
+    }
+}
+        
