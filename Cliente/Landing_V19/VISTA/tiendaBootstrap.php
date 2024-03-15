@@ -7,6 +7,8 @@
   <title>Encabezado con Bootstrap</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
   <!-- FUENTES -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -148,15 +150,24 @@
 
   <!--                                                   BOTONES CURSOS                                                      -->
   <div class="row justify-content-center mt-5 w-100 mb-5">
-    <form action="MODELO/CambioURL.php" method="POST" class="row w-50 justify-content-around">
-      <?php
-      $lenguajes = $modelo->solicitarLenguajes();
-
-      foreach ($lenguajes as $lenguaje) {
-        $nombre = $lenguaje["Lenguaje"];
-        echo "<button name='$nombre' class='btn btn-primary rounded col-3 text-dark text-center bg-white p-1' style='font-size: 1.5em'>$nombre</button>";
-      }
-      ?>
+    <form action="MODELO/CambioURL.php" method="POST" class="row w-50 justify-content-around" id="lenguajesDisponibles">
+    <script>
+      jQuery(document).ready(function($){
+        $.ajax({
+          url: "MODELO/SolicitarLenguajes.php",
+          type: "GET",
+          dataType: "json", 
+          success: function(datos){
+              $.each(datos, function(index, lenguaje){
+                  $("#lenguajesDisponibles").append("<button name=" + lenguaje.Lenguaje + " class='btn btn-primary rounded col-3 text-dark text-center bg-white p-1' style='font-size: 1.5em'>" + lenguaje.Lenguaje + "</button>");
+              });
+          },
+          error: function(xhr, status, error){
+              console.log("Error:", error);
+          }
+        });
+      });
+    </script>
     </form>
   </div>
 
